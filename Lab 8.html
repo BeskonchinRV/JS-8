@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<head>
+    <title>Lab8</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+    <script>
+        var CAT = [
+            { name: "Луна", price: 100, food: "молоко" },
+            { name: "Снежок", price: 150, food: "сухой корм" },
+            { name: "Симба", price: 80, food: "рыба" },
+            { name: "Черныш", price: 120, food: "жидкий корм" },
+        ];
+
+        var DOG = [
+            { name: "Бейли", price: 200, food: "кости" },
+            { name: "Шарик", price: 180, food: "педигри" },
+            { name: "Рокки", price: 160, food: "говядина" },
+            { name: "Тузик", price: 190, food: "кега" },
+            { name: "Бейкер", price: 200, food: "кости" },
+        ];
+
+        function choosePet() {
+            var petChoice = confirm("Тебе нравятся кошки?");
+
+            if (petChoice) {
+                var catNames = [];
+                for (var i = 0; i < CAT.length; i++) {
+                    catNames.push(CAT[i].name);
+                }
+                var catChoice = prompt(
+                    "Выбери кошку (1-" +
+                    catNames.length +
+                    "):\n" +
+                    catNames.join("\n")
+                );
+                if (catChoice >= 1 && catChoice <= CAT.length) {
+                    var cat = CAT[catChoice - 1];
+                    var foodAmount = parseInt(
+                        prompt("На сколько рублей нужно купить корма кошке " + cat.name + "?")
+                    );
+                    if (!isNaN(foodAmount)) {
+                        var totalCost = cat.price + foodAmount;
+                        alert(
+                            "Стоимость " +
+                            cat.name +
+                            ": " +
+                            cat.price +
+                            " рублей\n" +
+                            "Стоимость корма: " +
+                            foodAmount +
+                            " рублей\n" +
+                            "Общая стоимость: " +
+                            totalCost +
+                            " рублей"
+                        );
+                    } else {
+                        alert("Введите корректную стоимость корма.");
+                    }
+                } else {
+                    alert("Пожалуйста, выберите корректный номер кошки.");
+                }
+            } else {
+                var dogNames = [];
+                for (var i = 0; i < DOG.length; i++) {
+                    dogNames.push(DOG[i].name);
+                }
+                var dogChoice = prompt(
+                    "Выбери собаку по номеру (1-" +
+                    dogNames.length +
+                    "):\n" +
+                    dogNames.join("\n")
+                );
+                if (dogChoice >= 1 && dogChoice <= DOG.length) {
+                    var dog = DOG[dogChoice - 1];
+                    var foodAmount = parseInt(
+                        prompt("На сколько рублей нужно купить корма собаке " + dog.name + "?")
+                    );
+                    if (!isNaN(foodAmount)) {
+                        var totalCost = dog.price + foodAmount;
+                        alert(
+                            "Стоимость " +
+                            dog.name +
+                            ": " +
+                            dog.price +
+                            " рублей\n" +
+                            "Стоимость корма: " +
+                            foodAmount +
+                            " рублей\n" +
+                            "Общая стоимость: " +
+                            totalCost +
+                            " рублей"
+                        );
+                    } else {
+                        alert("Введите корректную стоимость корма.");
+                    }
+                } else {
+                    alert("Пожалуйста, выберите корректный номер собаки.");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<button onclick="choosePet()">Выбери питомца</button>
+</body>
+</html>
